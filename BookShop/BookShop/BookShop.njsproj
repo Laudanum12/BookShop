@@ -39,9 +39,6 @@
     <Content Include="views\index.pug" />
     <Content Include="views\layout.pug" />
     <Content Include="views\error.pug" />
-    <Content Include="views\Page1.pug">
-      <SubType>Code</SubType>
-    </Content>
     <Content Include="views\Page2.pug">
       <SubType>Code</SubType>
     </Content>

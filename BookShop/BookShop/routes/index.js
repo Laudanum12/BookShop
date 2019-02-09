@@ -13,7 +13,9 @@ router.get('/', function (req, res) {
 	res.render('index', { title: 'Express', "data": getData() });
 });
 router.get('/task/new', async function (req, res) {
-	res.render('page2', { title: 'Express', "data": getData() });
+	var taskid = req.params.taskid;
+	var task = await find_task(taskid);
+	res.render('page2', { Название: task[0].Название, Цена: task[0].Цена, Количество_просмотров: task[0].Количество_просмотров_книги });
 });
 router.get('/task/next', async function (req, res) {
 	res.render('page3', { title: 'Express', "data": getData() });
@@ -103,7 +105,7 @@ async function find_book(код_книги) {
 // получить все задачи из базы данных
 async function get_all_data() {
 	var sql_text = `select название, цена, количество_просмотров_книги from Книга
-    order by название`;
+    order by название desc`;
 
 	var connection = new sql.ConnectionPool({
 		database: 'Book_Shop',
