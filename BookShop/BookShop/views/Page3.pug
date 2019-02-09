@@ -1,13 +1,35 @@
 ﻿doctype html
 html
-  head
-    <title>page3</title>
-  body
-   <h1 align="center"; style="font-size: 46px; color: white"> Книжный магазин </h1>
+head
+<title>page3</title>
+body
+<h1 align="center"; style="font-size: 46px; color: white"> Книжный магазин </h1>
  
-   <body background="https://i.pinimg.com/564x/5b/5a/00/5b5a0024129839d6f3777f0cb869877b.jpg">
+<body background="https://i.pinimg.com/564x/5b/5a/00/5b5a0024129839d6f3777f0cb869877b.jpg">
 
-    div
-        <a> Добавить строку </a>
-    div
-        <a href='/'; style="font-size: 26px; color: white" > На главную </a>
+div
+    <a> Добавить строку </a>
+div
+    <a href='/'; style="font-size: 26px; color: white" > На главную </a>
+table
+		thead
+			th Книга
+			th Количество
+			th Удаление
+		//-- данные будут передаваться в виде массива со структурой {TaskID, Priority, DateCreated, Name}
+		each task in tasks
+			tr
+				td #{Книга.название}
+				td 
+					form(action='/Корзина_книга/количество_книг/'+ Корзина_книга.код_книги  method='post')
+						select(name='количество книг')
+							each i in [1,2,3,4,5]
+								if i == Корзина_книга.количество_книг
+									option(value=i selected) #{i}
+								else
+									option(value=i) #{i}
+						input(type='submit' value='Обновить')
+				td
+					form(action='/Корзина_книга/код_книга/'+Корзина_книга.код_книга   method='post')
+						input(type='submit' value='Удалить')
+				
